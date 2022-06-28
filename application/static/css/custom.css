@@ -24,3 +24,7 @@ section {
 .b-r {
     border-right: 4px solid #F8F9FA;
 }
+
+.external-profiles {
+    word-wrap: break-word;
+}
