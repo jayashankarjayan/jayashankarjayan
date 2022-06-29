@@ -28,3 +28,21 @@ section {
 .external-profiles {
     word-wrap: break-word;
 }
+
+.exp-divider {
+    color: #000000;
+}
+.exp-designation {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration-line: underline;
+}
+
+.exp-org {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
