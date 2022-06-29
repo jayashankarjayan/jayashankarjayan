@@ -11,4 +11,4 @@ APP.register_blueprint(BLUEPRINT_HOME, url_prefix="/home")
 APP.register_blueprint(BLUEPRINT_RESUME, url_prefix="/resume")
 
 if __name__ == "__main__":
-    APP.run(port=33507)
+    APP.run(host="0.0.0.0", port=33507)
