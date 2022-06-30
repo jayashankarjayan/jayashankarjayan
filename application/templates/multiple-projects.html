@@ -1,0 +1,66 @@
+{% extends "skeleton.html" %}
+{% block page_name %}Project{% endblock %}
+
+{% block content %}
+        <!-- Content -->
+        <section id="page-content" class="background-grey">
+            <div class="container">
+                <!-- Portfolio Filter -->
+                <nav class="grid-filter gf-outline" data-layout="#portfolio">
+                    <ul>
+                        <li class="active"><a href="#" data-category="*">Show All</a></li>
+                        <li><a href="#" data-category=".ct-branding">Technology #1</a></li>
+                        <li><a href="#" data-category=".ct-photography">Technology #2</a></li>
+                        <li><a href="#" data-category=".ct-marketing">Technology #2</a></li>
+                        <li><a href="#" data-category=".ct-media">Technology #3</a></li>
+                        <li><a href="#" data-category=".ct-webdesign">Technology #4</a></li>
+                    </ul>
+                    <div class="grid-active-title">Show All</div>
+                </nav>
+                <!-- end: Portfolio Filter -->
+                <!-- Portfolio -->
+                <div class="row col-no-margin equalize" data-equalize-item=".text-box">
+                    <!--Box 1-->
+                    <div class="col-lg-4" style="background-color: #506681;">
+                        <div class="text-box hover-effect">
+                            <a href="/projects/1"> 
+                                <div class="icon-preview">
+                                    <div class="icon-holder"><i class="icon-chrome"> </i></div>
+                                </div>
+                                <h3>Project #1</h3>
+                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="background-color: #506681;">
+                        <div class="text-box hover-effect">
+                            <a href="/projects/2"> 
+                                <div class="icon-preview">
+                                    <div class="icon-holder">
+                                        <i class="fab fa-android"></i>
+                                    </div>
+                                </div>
+                                <h3>Project #2</h3>
+                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="background-color: #506681;">
+                        <div class="text-box hover-effect">
+                            <a href="/projects/3"> 
+                                <div class="icon-preview">
+                                    <div class="icon-holder"><i class="fa fa-info"> </i></div>
+                                </div>
+                                <h3>Project #3</h3>
+                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End: Box 1-->
+                </div>
+                <!-- end: Portfolio -->
+            </div>
+        </section>
+        <!-- end: Content -->
+        <!-- Footer -->
+    {% endblock %}
