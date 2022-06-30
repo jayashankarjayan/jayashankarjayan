@@ -1,14 +1,10 @@
 import os
 
-from flask import Flask
-from flasgger import Swagger
-
+from __init__ import APP
 from home.routes import BLUEPRINT_HOME
 from resume.routes import BLUEPRINT_RESUME
 from projects.routes import BLUEPRINT_PROJECTS
 
-APP = Flask(__name__, static_folder='static', static_url_path='')
-swagger = Swagger(APP)
 
 APP.register_blueprint(BLUEPRINT_HOME, url_prefix="/home")
 APP.register_blueprint(BLUEPRINT_RESUME, url_prefix="/resume")
