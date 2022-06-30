@@ -1,0 +1,141 @@
+{% extends "skeleton.html" %}
+{% block page_name %}Resume{% endblock %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <section id="page-content">
+        <div class="container">
+            <div class="row">
+                <!-- content -->
+                <div class="content col-lg-9">
+                    <!-- Blog -->
+                    <div id="blog" class="single-post">
+                        <!-- Post single item-->
+                        <div class="post-item">
+                            <div class="post-item-wrap p-3">
+                                <div class="post-item-description">
+                                    <h2>Project #2</h2>
+                                    <div class="post-meta">
+                                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
+                                        <span class="post-meta-category"><a href=""><i class="fa fa-tag"></i>Technology, Domain</a></span>
+                                    </div>
+                                    <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit. Nulla facilisi. Pellentesque
+                                        sed nibh a quam accumsan dignissim quis quis urna. The most happiest time of the day!. Praesent id dolor dui, dapibus gravida elit. Donec consequat laoreet sagittis. Suspendisse ultricies ultrices viverra. Morbi
+                                        rhoncus laoreet tincidunt. Mauris interdum convallis metus.M</p>
+                                </div>
+                                <div class="post-tags">
+                                    <a href="#">Skill #1</a>
+                                    <a href="#">Skill #2</a>
+                                    <a href="#">Skill #3</a>
+                                    <a href="#">Skill #4</a>
+                                </div>
+                                <div class="post-navigation">
+                                    <a href="blog-single-slider.html" class="post-prev">
+                                        <div class="post-prev-title"><span>Previous Project</span>Project #1</div>
+                                    </a>
+
+                                    <a href="blog-single-video.html" class="post-next">
+                                        <div class="post-next-title"><span>Next Project</span>Project #3</div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end: Post single item-->
+                    </div>
+                </div>
+                <!-- end: content -->
+                <!-- Sidebar-->
+                <div class="sidebar sticky-sidebar col-lg-3">
+                    <!--widget newsletter-->
+                    <div class="widget  widget-newsletter">
+                        <form id="widget-search-form-sidebar" action="search-results-page.html" method="get">
+                            <div class="input-group">
+                                <input type="text" aria-required="true" name="q" class="form-control widget-search-form" placeholder="Search for projects...">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end: widget newsletter-->
+                    <!--Tabs with Posts-->
+                    <div class="widget">
+                        <h4 class="widget-title">Tabs with projects</h4>
+                        <div class="tabs">
+                            <ul class="nav nav-tabs" id="tabs-posts" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="true">Featured</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#recent" role="tab" aria-controls="recent" aria-selected="false">Recent</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tabs-posts-content">
+                                <div class="tab-pane fade active show" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+                                    <div class="post-thumbnail-list">
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/6.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">Beautiful nature, and rare feathers!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/7.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">The most happiest time of the day!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/8.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">New costs and rise of the economy!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
+                                    <div class="post-thumbnail-list">
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/7.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">The most happiest time of the day!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/8.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">New costs and rise of the economy!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                        <div class="post-thumbnail-entry">
+                                            <img alt="" src="images/blog/thumbnail/6.jpg">
+                                            <div class="post-thumbnail-content">
+                                                <a href="#">Beautiful nature, and rare feathers!</a>
+                                                <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
+                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End: Tabs with Posts-->
+
+                </div>
+                <!-- end: sidebar-->
+            </div>
+        </div>
+    </section>
+    <!-- end: Page Content -->
+{% endblock %}
