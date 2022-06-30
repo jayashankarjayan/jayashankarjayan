@@ -39,19 +39,21 @@
                     <div class="col-md b-l">
                         <div class="row white-box pb-2 pt-2">
                             <h2>Experience</h2>
-                            <div class="mb-2">
-                                <span class="exp-designation">Senior Software Engineer</span>
-                                <span class="exp-org">&nbsp;&#8212;&nbsp;L & T Infotech Limited</span>
-                                <br/>
-                                <span>Sep 2021 to Present (10 months)</span>
-                                <hr class="exp-divider mt-3"/>
-                            </div>
-                            <div class="mb-2">  
-                                <span class="exp-designation">Developer</span>
-                                <span class="exp-org">&nbsp;&#8212;&nbsp;LearningMate</span>
-                                <br/>
-                                <span>June 2018 to Sep 2021 (3 years 3 months)</span>
-                            </div>
+                            {% for organization in organizations %}
+                                <div class="mb-2">
+                                    <span class="exp-designation">{{ organization.designation }}</span>
+                                    <span class="exp-org">&nbsp;&#8212;&nbsp;{{ organization.name }}</span>
+                                    <br/>
+                                    {% if organization.is_current_org %}
+                                        <span>{{ organization.join_date }} to Present&nbsp;({{ organization.duration }})</span>
+                                    {% else %}
+                                        <span>{{ organization.join_date }} to {{ organization.exit_date }}&nbsp;({{ organization.duration }})</span>
+                                    {% endif %}
+                                    {% if loop.index == organizations|length - 1 %}
+                                        <hr class="exp-divider mt-3"/>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
                         </div>
                         <div class="row white-box mt-2 pb-2 pt-2">
                             <h2>Education</h2>
