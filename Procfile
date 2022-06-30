@@ -1,1 +1,1 @@
-web: python application/server.py
+web: cd application && gunicorn server:APP -b 0.0.0.0:$PORT
