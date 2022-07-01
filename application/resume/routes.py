@@ -15,7 +15,10 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static", "images")
 @BLUEPRINT_RESUME.route("/", methods=["GET"])
 def render_resume():
     organizations = resume.get_organization_details()
-    return render_template("page-about-me-basic.html", organizations=organizations)
+    projects = resume.get_projects_list()
+    return render_template("page-about-me-basic.html",
+                           organizations=organizations,
+                           projects=projects)
 
 @BLUEPRINT_RESUME.route("/download", methods=["GET"])
 @swag_from(SWAGGER_FOLDER + "/serve_file.yml")

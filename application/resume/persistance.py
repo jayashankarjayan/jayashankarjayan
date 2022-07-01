@@ -1,5 +1,5 @@
 from models import read
-from resume._dataclass import Organization
+from resume._dataclass import Organization, ProjectsList
 
 
 class Resume:
@@ -12,5 +12,14 @@ class Resume:
             organizations.append(Organization(*organization))
 
         return organizations
+
+    @classmethod
+    def get_projects_list(cls):
+        records = read.get_project_list()
+        projects = []
+        for record in records:
+            projects.append(ProjectsList(*record))
+
+        return projects
 
 resume = Resume()

@@ -1,3 +1,4 @@
+from email.policy import default
 from flask_sqlalchemy import SQLAlchemy
 from server import APP
 
@@ -12,6 +13,9 @@ class Projects(database.Model):
     id = database.Column(database.Integer, primary_key=True, autoincrement=True)
     name = database.Column(database.String(80), unique=True, nullable=False)
     description = database.Column(database.Text, nullable=False)
+    start_date = database.Column(database.Integer, nullable=False)
+    end_date = database.Column(database.Integer, nullable=True)
+    is_wip = database.Column(database.Boolean, nullable=False, default=False)
     organization_id = database.Column(database.Integer,
                                       database.ForeignKey("organizations.id"),
                                       nullable=True)

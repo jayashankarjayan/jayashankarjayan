@@ -78,16 +78,21 @@
                 <div class="row mt-2">
                     <div class="col-md white-box pb-2 pt-2">
                         <h2>Projects</h2>
-                        <div class="mb-2">
-                            <a class="exp-designation" href="/projects/1">Pencil Sketch</a>
-                            <br />
-                            <span class="exp-org">May 2021 to June 2021</span>
-                            <p>
-                                An Android application to make beautiful pencil sketches out of colourful photographs.
-                            </p>
-                            <button type="button" class="btn btn-primary btn-rounded btn-xs">Skill #1</button>
-                            <button type="button" class="btn btn-primary btn-rounded btn-xs">Skill #2</button>
-                        </div>
+                        {% for project in projects %}
+                            <div class="mb-2">
+                                <a class="exp-designation" href="/projects/1">{{ project.name }}</a>
+                                <br />
+                                <span class="exp-org">{{ project.start_date }} to {{ project.end_date }}</span>
+                                <p>{{ project.description }}</p>
+                                {% for tag in project.tags %}
+                                    <button type="button" class="btn btn-primary btn-rounded btn-xs">{{ tag }}</button>
+                                {% endfor %}
+
+                                {% if loop.index == projects|length - 1 %}
+                                    <hr class="exp-divider mt-3" />
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
