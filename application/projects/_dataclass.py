@@ -21,6 +21,17 @@ class Project:
         self.previous_project = self.id - 1
 
 @define
+class ProjectCard:
+    id: int
+    name: str
+    description: str
+    organization: str
+    tags: list
+
+    def __attrs_post_init__(self):
+        self.tags = " ".join(["tag-" + tag.lower() for tag in self.tags])
+
+@define
 class RecentProjects:
     id: int
     name: str
@@ -41,3 +52,7 @@ class RecentProjects:
         
         self.project_age = self.project_age.strip()
 
+@define
+class TagsAndCategories:
+    id: int
+    name: str

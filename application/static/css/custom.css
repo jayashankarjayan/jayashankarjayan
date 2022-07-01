@@ -47,3 +47,11 @@ section {
     font-size: 15px;
     line-height: 18px;
 }
+
+.equalize-card {
+    height: 240px;
+}
+
+.project-desc {
+    overflow-x: hidden;
+}

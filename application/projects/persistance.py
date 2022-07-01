@@ -1,6 +1,6 @@
-from concurrent.futures import process
 from models import read
-from projects._dataclass import Project, RecentProjects
+from projects._dataclass import Project, RecentProjects,\
+                                ProjectCard, TagsAndCategories
 
 
 class Projects:
@@ -23,5 +23,21 @@ class Projects:
             projects.append(RecentProjects(*record))
 
         return projects
+    
+    @classmethod
+    def get_project_cards(cls):
+        records = read.get_projects_card()
+        projects = []
+        for record in records:
+            projects.append(ProjectCard(*record))
+        return projects
+
+    @classmethod
+    def get_project_tags(cls):
+        records = read.get_all_tags_and_categories()
+        tags = []
+        for record in records:
+            tags.append(TagsAndCategories(*record))
+        return tags
 
 projects = Projects()

@@ -2,64 +2,44 @@
 {% block page_name %}Project{% endblock %}
 
 {% block content %}
+
         <!-- Content -->
-        <section id="page-content" class="background-grey">
+        <section id="page-content">
             <div class="container">
                 <!-- Portfolio Filter -->
                 <nav class="grid-filter gf-outline" data-layout="#portfolio">
                     <ul>
                         <li class="active"><a href="#" data-category="*">Show All</a></li>
-                        <li><a href="#" data-category=".ct-branding">Technology #1</a></li>
-                        <li><a href="#" data-category=".ct-photography">Technology #2</a></li>
-                        <li><a href="#" data-category=".ct-marketing">Domain #1</a></li>
-                        <li><a href="#" data-category=".ct-media">Domain #2</a></li>
+                        {% for tag in tags %}
+                            <li><a href="#" data-category=".tag-{{ tag.name|lower }}">{{ tag.name }}</a></li>
+                        {% endfor %}
                     </ul>
                     <div class="grid-active-title">Show All</div>
                 </nav>
                 <!-- end: Portfolio Filter -->
                 <!-- Portfolio -->
-                <div class="row col-no-margin equalize" data-equalize-item=".text-box">
-                    <!--Box 1-->
-                    <div class="col-lg-4" style="background-color: #506681;">
-                        <div class="text-box hover-effect">
-                            <a href="/projects/1"> 
-                                <div class="icon-preview">
-                                    <div class="icon-holder"><i class="icon-chrome"> </i></div>
+                <div id="portfolio" class="grid-layout portfolio-3-columns" data-margin="20">
+                    <!-- portfolio item -->
+                    {% for project in projects %}
+                    <div class="portfolio-item no-overlay {{ project.tags }}">
+                        <div class="card equalize-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="/projects/{{ project.id }}">{{ project.name }}</a>
+                                </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    <i class="fa fa-briefcase"></i>
+                                    {{ project.organization }}
+                                </h6>
+                                <p class="card-text project-desc">{{ project.description }}</p>
                                 </div>
-                                <h3>Project #1</h3>
-                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4" style="background-color: #506681;">
-                        <div class="text-box hover-effect">
-                            <a href="/projects/2"> 
-                                <div class="icon-preview">
-                                    <div class="icon-holder">
-                                        <i class="fab fa-android"></i>
-                                    </div>
-                                </div>
-                                <h3>Project #2</h3>
-                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4" style="background-color: #506681;">
-                        <div class="text-box hover-effect">
-                            <a href="/projects/3"> 
-                                <div class="icon-preview">
-                                    <div class="icon-holder"><i class="fa fa-info"> </i></div>
-                                </div>
-                                <h3>Project #3</h3>
-                                <p>Ispendisse consectetur fringilla luctus usce id mi diam, non ornare.</p>
-                            </a>
-                        </div>
-                    </div>
-                    <!--End: Box 1-->
+                    {% endfor %}
+                    <!-- end: portfolio item -->
                 </div>
                 <!-- end: Portfolio -->
             </div>
         </section>
         <!-- end: Content -->
-        <!-- Footer -->
-    {% endblock %}
+{% endblock %}

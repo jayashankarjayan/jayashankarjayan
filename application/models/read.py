@@ -51,6 +51,23 @@ def get_project_list():
                               .all()
     return projects
 
+def get_projects_card():
+    columns = [
+        entity.Projects.id,
+        entity.Projects.name,
+        entity.Projects.description,
+        entity.Organizations.name,
+    ]
+
+    projects = entity.Projects.query.with_entities(*columns, func.array_agg(entity.TagsAndCategories.name))\
+                              .join(entity.Organizations, entity.Organizations.id == entity.Projects.organization_id)\
+                              .join(entity.projects_tags_mapping, entity.projects_tags_mapping.c.project_id == entity.Projects.id)\
+                              .join(entity.TagsAndCategories, entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
+                              .order_by(desc(entity.Projects.end_date))\
+                              .group_by(*columns)\
+                              .all()
+    return projects
+
 def get_single_project(project_id: int):
     normal_columns = [
         entity.Projects.id,
@@ -95,7 +112,20 @@ def get_most_recent_projects(current_project, limit=3):
     ]
 
     projects = entity.Projects.query.with_entities(*columns)\
-                              .filter(entity.Projects.id == current_project)\
+                              .filter(entity.Projects.id != current_project)\
                               .order_by(desc(entity.Projects.end_date))\
                               .limit(limit).all()
     return projects
+
+def get_all_tags_and_categories():
+    columns = [
+        entity.TagsAndCategories.id,
+        entity.TagsAndCategories.name
+    ]
+
+    records = entity.TagsAndCategories.query.with_entities(*columns)\
+                                      .join(entity.projects_tags_mapping,
+                                            entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
+                                      .all()
+    
+    return records
