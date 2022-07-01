@@ -15,27 +15,26 @@
                         <div class="post-item">
                             <div class="post-item-wrap p-3">
                                 <div class="post-item-description">
-                                    <h2>Project #2</h2>
+                                    <h2>{{ project.name }}</h2>
                                     <div class="post-meta">
-                                        <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Jan 21, 2017</span>
-                                        <span class="post-meta-category"><a href=""><i class="fa fa-tag"></i>Technology, Domain, Company</a></span>
+                                        <span class="post-meta-date">
+                                            <i class="fa fa-calendar-o"></i>{{ project.start_date}} to {{ project.end_date }}
+                                        </span>
                                     </div>
-                                    <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit. Nulla facilisi. Pellentesque
-                                        sed nibh a quam accumsan dignissim quis quis urna. The most happiest time of the day!. Praesent id dolor dui, dapibus gravida elit. Donec consequat laoreet sagittis. Suspendisse ultricies ultrices viverra. Morbi
-                                        rhoncus laoreet tincidunt. Mauris interdum convallis metus.M</p>
+                                    <p>{{ project.description }}</p>
                                 </div>
                                 <div class="post-tags">
-                                    <a href="#">Skill #1</a>
-                                    <a href="#">Skill #2</a>
-                                    <a href="#">Skill #3</a>
-                                    <a href="#">Skill #4</a>
+                                    {% for tag in project.tags %}
+                                        <a href="#">{{ tag }}</a>
+                                    {% endfor %}
                                 </div>
                                 <div class="post-navigation">
-                                    <a href="#" class="post-prev">
-                                        <div class="post-prev-title"><span>Previous Project</span>Project #1</div>
-                                    </a>
-
-                                    <a href="#" class="post-next">
+                                    {% if project.previous_project %}
+                                        <a href="{{ project.previous_project }}" class="post-prev">
+                                            <div class="post-prev-title"><span>Previous Project</span>Project #1</div>
+                                        </a>
+                                    {% endif %}
+                                    <a href="{{ project.next_project }}" class="post-next">
                                         <div class="post-next-title"><span>Next Project</span>Project #3</div>
                                     </a>
                                 </div>
@@ -74,7 +73,6 @@
                                 <div class="tab-pane fade active show" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                     <div class="post-thumbnail-list">
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/6.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">Beautiful nature, and rare feathers!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
@@ -82,7 +80,6 @@
                                             </div>
                                         </div>
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/7.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">The most happiest time of the day!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
@@ -90,7 +87,6 @@
                                             </div>
                                         </div>
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/8.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">New costs and rise of the economy!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
@@ -102,7 +98,6 @@
                                 <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                     <div class="post-thumbnail-list">
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/7.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">The most happiest time of the day!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
@@ -110,7 +105,6 @@
                                             </div>
                                         </div>
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/8.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">New costs and rise of the economy!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
@@ -118,7 +112,6 @@
                                             </div>
                                         </div>
                                         <div class="post-thumbnail-entry">
-                                            <img alt="" src="images/blog/thumbnail/6.jpg">
                                             <div class="post-thumbnail-content">
                                                 <a href="#">Beautiful nature, and rare feathers!</a>
                                                 <span class="post-date"><i class="icon-clock"></i> 24h ago</span>

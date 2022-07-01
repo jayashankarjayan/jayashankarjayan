@@ -80,7 +80,7 @@
                         <h2>Projects</h2>
                         {% for project in projects %}
                             <div class="mb-2">
-                                <a class="exp-designation" href="/projects/1">{{ project.name }}</a>
+                                <a class="exp-designation" href="/projects/{{ project.idm }}">{{ project.name }}</a>
                                 <br />
                                 <span class="exp-org">{{ project.start_date }} to {{ project.end_date }}</span>
                                 <p>{{ project.description }}</p>

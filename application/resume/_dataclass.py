@@ -27,11 +27,3 @@ class Organization:
             self.duration += f" {duration.months} months"
         
         self.duration = self.duration.strip()
-@define
-class ProjectsList:
-    name: str
-    is_wip: bool
-    description: str
-    tags: list
-    start_date: str
-    end_date: str

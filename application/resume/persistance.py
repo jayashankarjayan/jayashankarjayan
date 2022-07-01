@@ -1,6 +1,6 @@
 from models import read
-from resume._dataclass import Organization, ProjectsList
-
+from resume._dataclass import Organization
+from projects._dataclass import Project
 
 class Resume:
 
@@ -18,7 +18,7 @@ class Resume:
         records = read.get_project_list()
         projects = []
         for record in records:
-            projects.append(ProjectsList(*record))
+            projects.append(Project(*record))
 
         return projects
 
