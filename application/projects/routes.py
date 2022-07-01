@@ -14,4 +14,7 @@ def get_single_project(project_id):
     if single_project is None:
         abort(404)
 
-    return render_template("single-project.html", project=single_project)
+    recent_projects = projects.get_most_recent_projects(current_project=project_id)
+
+    return render_template("single-project.html",
+                           project=single_project, recent_projects=recent_projects)

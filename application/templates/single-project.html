@@ -20,6 +20,7 @@
                                         <span class="post-meta-date">
                                             <i class="fa fa-calendar-o"></i>{{ project.start_date}} to {{ project.end_date }}
                                         </span>
+                                        <span class="post-meta-category"><a href=""><i class="fa fa-briefcase"></i>{{ project.organization }}</a></span>
                                     </div>
                                     <p>{{ project.description }}</p>
                                 </div>
@@ -59,65 +60,26 @@
                     <!--end: widget newsletter-->
                     <!--Tabs with Posts-->
                     <div class="widget">
-                        <h4 class="widget-title">Tabs with projects</h4>
                         <div class="tabs">
                             <ul class="nav nav-tabs" id="tabs-posts" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="true">Featured</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#recent" role="tab" aria-controls="recent" aria-selected="false">Recent</a>
+                                    <a class="nav-link active"  role="tab" aria-controls="featured" aria-selected="true">Recent Projects</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="tabs-posts-content">
                                 <div class="tab-pane fade active show" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                     <div class="post-thumbnail-list">
+                                        {% for recent_project in recent_projects %}
                                         <div class="post-thumbnail-entry">
                                             <div class="post-thumbnail-content">
-                                                <a href="#">Beautiful nature, and rare feathers!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
+                                                <a href="/projects/{{ recent_project.id }}">{{ recent_project.name }}</a>
+                                                <span class="post-date" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Project last updated {{ recent_project.project_age }} ago">
+                                                    <i class="icon-calendar"></i> {{ recent_project.project_age }}
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">The most happiest time of the day!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">New costs and rise of the economy!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
-                                    <div class="post-thumbnail-list">
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">The most happiest time of the day!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">New costs and rise of the economy!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="#">Beautiful nature, and rare feathers!</a>
-                                                <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
-                                                <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

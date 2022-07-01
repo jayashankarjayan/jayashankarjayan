@@ -1,6 +1,7 @@
-from attrs import define, field
 from datetime import datetime
+
 from dateutil import relativedelta
+from attrs import define, field
 
 @define
 class Organization:
@@ -27,3 +28,19 @@ class Organization:
             self.duration += f" {duration.months} months"
         
         self.duration = self.duration.strip()
+
+@define
+class Project:
+    id: int
+    name: str
+    is_wip: bool
+    description: str
+    tags: list
+    start_date: str
+    end_date: str
+    next_project: int = field(init=False)
+    previous_project: int = field(init=False)
+
+    def __attrs_post_init__(self):
+        self.next_project = self.id + 1
+        self.previous_project = self.id - 1

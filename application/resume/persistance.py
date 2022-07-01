@@ -1,6 +1,5 @@
 from models import read
-from resume._dataclass import Organization
-from projects._dataclass import Project
+from resume._dataclass import Organization, Project
 
 class Resume:
 
