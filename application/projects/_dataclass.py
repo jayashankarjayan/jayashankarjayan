@@ -60,5 +60,4 @@ class RecentProjects:
 
 @define
 class TagsAndCategories:
-    id: int
     name: str
