@@ -1,5 +1,5 @@
 {% extends "skeleton.html" %}
-{% block page_name %}Project{% endblock %}
+{% block page_name %}{{ project.name }} {% endblock %}
 
 {% block content %}
 
@@ -48,45 +48,22 @@
                 <!-- end: content -->
                 <!-- Sidebar-->
                 <div class="sidebar sticky-sidebar col-lg-3">
-                    <!--widget newsletter-->
-                    <div class="widget  widget-newsletter">
-                        <form id="widget-search-form-sidebar" action="search-results-page.html" method="get">
-                            <div class="input-group">
-                                <input type="text" aria-required="true" name="q" class="form-control widget-search-form" placeholder="Search for projects...">
-                                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!--end: widget newsletter-->
-                    <!--Tabs with Posts-->
-                    <div class="widget">
-                        <div class="tabs">
-                            <ul class="nav nav-tabs" id="tabs-posts" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active"  role="tab" aria-controls="featured" aria-selected="true">Recent Projects</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tabs-posts-content">
-                                <div class="tab-pane fade active show" id="featured" role="tabpanel" aria-labelledby="featured-tab">
-                                    <div class="post-thumbnail-list">
-                                        {% for recent_project in recent_projects %}
-                                        <div class="post-thumbnail-entry">
-                                            <div class="post-thumbnail-content">
-                                                <a href="/projects/{{ recent_project.id }}">{{ recent_project.name }}</a>
-                                                <span class="post-date" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Project last updated {{ recent_project.project_age }} ago">
-                                                    <i class="icon-calendar"></i> {{ recent_project.project_age }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
+                    <div class="widget ">
+                        <h4 class="widget-title">Recent Posts</h4>
+                        <div class="post-thumbnail-list">
+                            {% for recent_project in recent_projects %}
+                                <div class="post-thumbnail-entry">
+                                    <div class="post-thumbnail-content">
+                                        <a href="#">{{ recent_project.name }}</a>
+                                        <span class="post-date" data-bs-toggle="tooltip" data-bs-title="Last updated {{ recent_project.project_age }} ago">
+                                            <i class="icon-calendar"></i>&nbsp;
+                                            {{ recent_project.project_age }}
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <!--End: Tabs with Posts-->
-
                 </div>
                 <!-- end: sidebar-->
             </div>

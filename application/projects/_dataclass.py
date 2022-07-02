@@ -45,10 +45,16 @@ class RecentProjects:
         gap = relativedelta.relativedelta(current_date, parsed_end_date)
         
         if gap.years:
-            self.project_age = f"{gap.years} years"
+            if gap.years > 1:
+                self.project_age = f"{gap.years} years"
+            else:
+                self.project_age = f"{gap.years} year"
         
         if gap.months:
-            self.project_age += f" {gap.months} months"
+            if gap.months > 1:
+                self.project_age += f" {gap.months} and months"
+            else:
+                self.project_age += f" {gap.months} and month"
         
         self.project_age = self.project_age.strip()
 
