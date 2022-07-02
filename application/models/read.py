@@ -119,8 +119,7 @@ def get_most_recent_projects(current_project, limit=3):
 
 def get_all_tags_and_categories():
     columns = [
-        entity.TagsAndCategories.id,
-        entity.TagsAndCategories.name
+        func.distinct(entity.TagsAndCategories.name)
     ]
 
     records = entity.TagsAndCategories.query.with_entities(*columns)\
