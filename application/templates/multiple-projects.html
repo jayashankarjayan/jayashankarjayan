@@ -11,7 +11,7 @@
                     <ul>
                         <li class="active"><a href="#" data-category="*">Show All</a></li>
                         {% for tag in tags %}
-                            <li><a href="#" data-category=".tag-{{ tag.name|lower }}">{{ tag.name }}</a></li>
+                            <li><a href="#" data-category=".tag-{{ tag.id }}">{{ tag.name }}</a></li>
                         {% endfor %}
                     </ul>
                     <div class="grid-active-title">Show All</div>

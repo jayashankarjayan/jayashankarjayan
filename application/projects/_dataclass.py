@@ -29,7 +29,7 @@ class ProjectCard:
     tags: list
 
     def __attrs_post_init__(self):
-        self.tags = " ".join(["tag-" + tag.lower() for tag in self.tags])
+        self.tags = " ".join([f"tag-{tag}" for tag in self.tags])
 
 @define
 class RecentProjects:
@@ -60,4 +60,5 @@ class RecentProjects:
 
 @define
 class TagsAndCategories:
+    id: int
     name: str

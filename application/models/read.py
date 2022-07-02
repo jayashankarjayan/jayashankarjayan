@@ -59,7 +59,7 @@ def get_projects_card():
         entity.Organizations.name,
     ]
 
-    projects = entity.Projects.query.with_entities(*columns, func.array_agg(entity.TagsAndCategories.name))\
+    projects = entity.Projects.query.with_entities(*columns, func.array_agg(entity.TagsAndCategories.id))\
                               .join(entity.Organizations, entity.Organizations.id == entity.Projects.organization_id)\
                               .join(entity.projects_tags_mapping, entity.projects_tags_mapping.c.project_id == entity.Projects.id)\
                               .join(entity.TagsAndCategories, entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
@@ -119,12 +119,14 @@ def get_most_recent_projects(current_project, limit=3):
 
 def get_all_tags_and_categories():
     columns = [
-        func.distinct(entity.TagsAndCategories.name)
+        entity.TagsAndCategories.id,
+        entity.TagsAndCategories.name
     ]
 
     records = entity.TagsAndCategories.query.with_entities(*columns)\
                                       .join(entity.projects_tags_mapping,
-                                            entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
+                                            entity. projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
+                                      .group_by(entity.TagsAndCategories.id, entity.TagsAndCategories.name)\
                                       .all()
     
     return records

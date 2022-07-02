@@ -52,6 +52,12 @@ section {
     height: 240px;
 }
 
+.card-title {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .project-desc {
+    max-height: 140px;
     overflow-x: hidden;
 }
