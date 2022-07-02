@@ -54,7 +54,7 @@
                             {% for recent_project in recent_projects %}
                                 <div class="post-thumbnail-entry">
                                     <div class="post-thumbnail-content">
-                                        <a href="#">{{ recent_project.name }}</a>
+                                        <a href="/projects/{{ recent_project.id }}">{{ recent_project.name }}</a>
                                         <span class="post-date" data-bs-toggle="tooltip" data-bs-title="Last updated {{ recent_project.project_age }} ago">
                                             <i class="icon-calendar"></i>&nbsp;
                                             {{ recent_project.project_age }}
