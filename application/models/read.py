@@ -64,7 +64,7 @@ def get_projects_card():
                               .join(entity.projects_tags_mapping, entity.projects_tags_mapping.c.project_id == entity.Projects.id)\
                               .join(entity.TagsAndCategories, entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
                               .order_by(desc(entity.Projects.end_date))\
-                              .group_by(*columns)\
+                              .group_by(*columns, entity.Projects.end_date)\
                               .all()
     return projects
 

@@ -17,7 +17,7 @@ def resource_not_found(error):
     return render_template("404.html"), 404
 
 @APP.errorhandler(500)
-def resource_not_found(error):
+def unhandled_server_error(error):
     return render_template("500.html"), 500
 
 if __name__ == "__main__":
