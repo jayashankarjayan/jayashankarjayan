@@ -16,6 +16,10 @@ APP.register_blueprint(BLUEPRINT_PROJECTS, url_prefix="/projects")
 def resource_not_found(error):
     return render_template("404.html"), 404
 
+@APP.errorhandler(500)
+def resource_not_found(error):
+    return render_template("500.html"), 500
+
 if __name__ == "__main__":
     port = os.getenv("PORT", 5000)
     APP.run(host="0.0.0.0", port=port)
