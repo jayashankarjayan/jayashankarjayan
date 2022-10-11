@@ -1,7 +1,8 @@
 from datetime import datetime
+from attr import asdict
 
 from dateutil import relativedelta
-from attrs import define, field
+from attrs import define, field, asdict
 
 @define
 class Project:
@@ -62,3 +63,30 @@ class RecentProjects:
 class TagsAndCategories:
     id: int
     name: str
+@define
+class UserInputProject:
+    name: str
+    is_wip: bool
+    description: str
+    organization: str
+    tags: list
+    start_date: str
+    end_date: str
+
+    @property
+    def payload(self):
+        data = asdict(self)
+        data.pop("tags")
+        data.pop("organization")
+        data.pop("start_date")
+        data.pop("end_date")
+        return data
+
+@define
+class ProjectsAndTagsMapping:
+    tag_id: int
+    project_id: int
+
+    @property
+    def payload(self):
+        return asdict(self)

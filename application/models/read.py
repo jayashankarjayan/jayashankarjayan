@@ -1,5 +1,4 @@
 from models import entity
-from models.entity import database
 from sqlalchemy import func, desc
 
 date_format = "Mon, YYYY"
@@ -130,3 +129,12 @@ def get_all_tags_and_categories():
                                       .all()
     
     return records
+
+def get_tag_id(tag_name: str):
+    tag_id = None
+    record = entity.TagsAndCategories.query.with_entities(entity.TagsAndCategories.id)\
+                                      .filter(entity.TagsAndCategories.name == tag_name)\
+                                      .first()
+    if record is not None:
+        tag_id = record.id
+    return tag_id

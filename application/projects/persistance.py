@@ -1,6 +1,8 @@
-from models import read
+from models import read, write
 from projects._dataclass import Project, RecentProjects,\
-                                ProjectCard, TagsAndCategories
+                                ProjectCard, TagsAndCategories,\
+                                UserInputProject, ProjectsAndTagsMapping
+
 
 
 class Projects:
@@ -39,5 +41,19 @@ class Projects:
         for record in records:
             tags.append(TagsAndCategories(*record))
         return tags
+    
+    @classmethod
+    def add_new_project(cls, data: UserInputProject):
+        payload = data.payload
+        project_id = write.add_new_project(payload)
+
+        for tag in data.tags:
+            tag_id = read.get_tag_id(tag)
+            if tag_id is None:
+                tag_id = write.add_new_tag(tag)
+            write.map_tag_to_project(tag_id, project_id)
+
+        response = {"status": project_id}
+        return response
 
 projects = Projects()

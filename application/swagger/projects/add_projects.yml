@@ -1,0 +1,33 @@
+tags:
+  - Projects
+
+parameters:
+  - name: data
+    in: body
+    schema:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        start_date:
+          type: string
+        end_date:
+          type: string
+        is_wip:
+          type: boolean
+        organization:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+
+produces:
+  - application/json
+
+responses:
+  200:
+    description: OK
+    examples:
+      application/json: {"message": "Successfully added project", "status": true }

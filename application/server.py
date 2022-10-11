@@ -1,6 +1,7 @@
 import os
 
 from flask import render_template
+from flasgger import Swagger
 
 from __init__ import APP
 from home.routes import BLUEPRINT_HOME
@@ -22,4 +23,5 @@ def unhandled_server_error(error):
 
 if __name__ == "__main__":
     port = os.getenv("PORT", 5000)
+    Swagger(APP)
     APP.run(host="0.0.0.0", port=port)
