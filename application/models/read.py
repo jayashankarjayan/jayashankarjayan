@@ -138,3 +138,12 @@ def get_tag_id(tag_name: str):
     if record is not None:
         tag_id = record.id
     return tag_id
+
+def get_organization_id(organization_name: str):
+    organization_id = None
+    record = entity.Organizations.query.with_entities(entity.Organizations.id)\
+                                 .filter(entity.Organizations.name == organization_name)\
+                                 .first()
+    if record is not None:
+        organization_id = record.id
+    return organization_id

@@ -27,3 +27,7 @@ def map_tag_to_project(tag_id: int, project_id: int):
     database.session.commit()
     status = True
     return status
+
+def add_project_to_organization(organization_name: str):
+    organization_id = None
+    organization = entity.Organizations()

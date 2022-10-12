@@ -1,4 +1,7 @@
+from sqlalchemy.exc import IntegrityError
+
 from models import read, write
+from utils.common_dataclasses import BasicResponse
 from projects._dataclass import Project, RecentProjects,\
                                 ProjectCard, TagsAndCategories,\
                                 UserInputProject, ProjectsAndTagsMapping
@@ -44,16 +47,29 @@ class Projects:
     
     @classmethod
     def add_new_project(cls, data: UserInputProject):
-        payload = data.payload
-        project_id = write.add_new_project(payload)
+        try:
+            organization_id = read.get_organization_id(data.organization)
+            payload = data.payload
+            if organization_id is not None:
+                payload["organization_id"] = organization_id
+            project_id = write.add_new_project(payload)
 
-        for tag in data.tags:
-            tag_id = read.get_tag_id(tag)
-            if tag_id is None:
-                tag_id = write.add_new_tag(tag)
-            write.map_tag_to_project(tag_id, project_id)
+            for tag in data.tags:
+                tag_id = read.get_tag_id(tag)
+                if tag_id is None:
+                    tag_id = write.add_new_tag(tag)
+                write.map_tag_to_project(tag_id, project_id)
 
-        response = {"status": project_id}
+            message = f"Project {data.name} added successfully"
+            status = True
+        except IntegrityError:
+            message = "Unable to add project due to data integrity violation"
+            status = False
+        except Exception as why:
+            message = str(why)
+            status = False
+
+        response = BasicResponse(message=message, status=status).response
         return response
 
 projects = Projects()
