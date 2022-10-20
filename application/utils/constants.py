@@ -12,3 +12,4 @@ if not DB_CONNECTION_STRING:
     DB_CONNECTION_STRING = DEFAULT_CONNECTION_STRING
 
 BASE_SWAGGER_FOLDER = os.path.join(os.getcwd(), "swagger")
+ALLOWED_FILE_TYPES = [".xls", ".xlsx"]

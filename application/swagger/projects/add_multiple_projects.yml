@@ -1,0 +1,11 @@
+tags:
+  - Projects
+
+parameters:
+  - name: excel_file
+    in: formData
+    type: file
+
+responses:
+  200:
+    description: OK

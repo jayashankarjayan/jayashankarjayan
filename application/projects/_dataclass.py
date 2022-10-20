@@ -1,6 +1,7 @@
 from datetime import datetime
 from attr import asdict
 
+from pandas import to_datetime
 from dateutil import relativedelta
 from attrs import define, field, asdict
 
@@ -31,6 +32,8 @@ class ProjectCard:
 
     def __attrs_post_init__(self):
         self.tags = " ".join([f"tag-{tag}" for tag in self.tags])
+        if self.organization is None:
+            self.organization = "Freelance / Self"
 
 @define
 class RecentProjects:
@@ -63,6 +66,7 @@ class RecentProjects:
 class TagsAndCategories:
     id: int
     name: str
+
 @define
 class UserInputProject:
     name: str
@@ -73,13 +77,20 @@ class UserInputProject:
     start_date: str
     end_date: str
 
+    def __attrs_post_init__(self):
+        if self.is_wip == "Yes":
+            self.is_wip = True
+        else:
+            self.is_wip = False
+        self.tags = [tag for tag in self.tags.split(",")]
+        self.start_date = int(to_datetime(self.start_date).timestamp())
+        self.end_date = int(to_datetime(self.end_date).timestamp())
+        
     @property
     def payload(self):
         data = asdict(self)
         data.pop("tags")
         data.pop("organization")
-        data.pop("start_date")
-        data.pop("end_date")
         return data
 
 @define

@@ -29,10 +29,17 @@ def get_single_project(project_id):
     return render_template("single-project.html",
                            project=single_project, recent_projects=recent_projects)
 
-@BLUEPRINT_PROJECTS.route("/project", methods=["POST"])
+@BLUEPRINT_PROJECTS.route("/", methods=["POST"])
 @swag_from(SWAGGER_FOLDER + "/add_projects.yml", validation=True)
 def add_project():
     user_input = request.get_json()
     project =  UserInputProject(**user_input)
-    response = projects.add_new_project(project)
+    response = projects.add_new_project(project).response
+    return jsonify(response)
+
+@BLUEPRINT_PROJECTS.route("/projects", methods=["POST"])
+@swag_from(SWAGGER_FOLDER + "/add_multiple_projects.yml")
+def add_multiple_projects():
+    excel_file = request.files.get("excel_file")
+    response = projects.add_multiple_projects(excel_file)
     return jsonify(response)

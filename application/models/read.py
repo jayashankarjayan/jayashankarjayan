@@ -59,7 +59,7 @@ def get_projects_card():
     ]
 
     projects = entity.Projects.query.with_entities(*columns, func.array_agg(entity.TagsAndCategories.id))\
-                              .join(entity.Organizations, entity.Organizations.id == entity.Projects.organization_id)\
+                              .join(entity.Organizations, entity.Organizations.id == entity.Projects.organization_id, isouter=True)\
                               .join(entity.projects_tags_mapping, entity.projects_tags_mapping.c.project_id == entity.Projects.id)\
                               .join(entity.TagsAndCategories, entity.projects_tags_mapping.c.tag_id == entity.TagsAndCategories.id)\
                               .order_by(desc(entity.Projects.end_date))\

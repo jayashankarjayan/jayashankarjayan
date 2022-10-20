@@ -1,7 +1,14 @@
+import os
+import pathlib
+from tempfile import tempdir
+import pandas as pd
+
 from sqlalchemy.exc import IntegrityError
+from werkzeug.datastructures import FileStorage
 
 from models import read, write
 from utils.common_dataclasses import BasicResponse
+from utils.constants import ALLOWED_FILE_TYPES
 from projects._dataclass import Project, RecentProjects,\
                                 ProjectCard, TagsAndCategories,\
                                 UserInputProject, ProjectsAndTagsMapping
@@ -59,7 +66,6 @@ class Projects:
                 if tag_id is None:
                     tag_id = write.add_new_tag(tag)
                 write.map_tag_to_project(tag_id, project_id)
-
             message = f"Project {data.name} added successfully"
             status = True
         except IntegrityError:
@@ -69,7 +75,38 @@ class Projects:
             message = str(why)
             status = False
 
+        response = BasicResponse(message=message, status=status)
+        return response
+
+    @classmethod
+    def add_multiple_projects(cls, excel_file: FileStorage):
+        try:
+            file_extension = pathlib.Path(excel_file.filename).suffix
+            if file_extension not in ALLOWED_FILE_TYPES:
+                raise TypeError(f"Invalid file type: {file_extension}")
+            file_path = os.path.join(tempdir, excel_file.filename)
+            excel_file.save(os.path.join(file_path))
+            dataframe = pd.read_excel(excel_file).fillna("0")
+            projects = dataframe.to_dict(orient="records")
+            status = True
+            for project in projects:
+                project_validated = UserInputProject(**project)
+                project_added = cls.add_new_project(project_validated)
+                print(project_added.message)
+                if status is True and project_added.status is False:
+                    status = False
+            
+            if status is True:
+                message = "All projects added successfully"
+            else:
+                message = "Some projects were not added successfully"
+
+        except Exception as why:
+            message = str(why)
+            status = False
+        
         response = BasicResponse(message=message, status=status).response
+
         return response
 
 projects = Projects()
