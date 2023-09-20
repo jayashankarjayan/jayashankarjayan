@@ -16,3 +16,5 @@ Here are some ideas to get you started:
 -->
 
 ![Jayashankar's GitHub stats](https://github-readme-stats.vercel.app/api?username=jayashankarjayan&show_icons=true&theme=radical)
+
+![Jayashankar's Streak stats](https://github-readme-streak-stats.herokuapp.com/?user=jayashankarjayan&theme=dark)
