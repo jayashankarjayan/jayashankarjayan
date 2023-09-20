@@ -16,5 +16,3 @@ Here are some ideas to get you started:
 -->
 
 ![Jayashankar's GitHub stats](https://github-readme-stats.vercel.app/api?username=jayashankarjayan&show_icons=true&theme=radical)
-
-<p>&nbsp;<img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=jayashankarjayan&theme=dark" alt="Jayashankar's Streak stats" /></p>
