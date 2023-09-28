@@ -16,4 +16,3 @@ Here are some ideas to get you started:
 -->
 
 ![Jayashankar's GitHub stats](https://github-readme-stats.vercel.app/api?username=jayashankarjayan&show_icons=true&theme=radical)
-[![GitHub Streak](https://streak-stats.demolab.com/?user=jayashankarjayan&theme=dark)
